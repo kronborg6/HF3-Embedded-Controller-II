@@ -1,20 +1,24 @@
 import time
 from grovepi import *
 from grove_rgb_lcd import *
+import math
 rooms = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 rooms_name = ["Lærerværelse", "Kantian", "Kontor", "klasselokale 1", "klasselokale 2", "klasselokale 3", "Mødelokale", "klasselokale 4", "", ""]
+indstilling = ["Daglig rutine", "Nat indstilling"]
 
 led = 3
 potentiometer = 2
 dht_sensor_port = 7
 button = 4
+light_sensor = 1
+sound_senor = 0
 
 pinMode(led, "OUTPUT")
 pinMode(button, "INPUT")
 
 
 def GetRoom():
-    on_start = True
+    on_start = True 
 
     while on_start:
 
@@ -23,52 +27,61 @@ def GetRoom():
 
         if i > 1 and i < 100:
             #print("Room 1")
+            time.sleep(1)
             setText(rooms_name[0] + "       " + "Pick Room ")
-            button_status = digitalRead(button)
             if button_status:
                 print("Jeg virker")
                 analogWrite(led, 1)
         elif i > 100 and i < 200:
+            time.sleep(1)
             print("Room 2")
             setText(rooms_name[1] + "       " + "Pick Room ")
             if button_status:
                 analogWrite(led, 0)
         elif  i > 200 and i < 300:
+            time.sleep(1)
             print("Room 3")
             setText(rooms_name[2] + "       " + "Pick Room ")
             if button_status:
                 print("")
         elif i > 300 and i < 400:
+            time.sleep(1)
             print("Room 4")
             setText(rooms_name[3] + "       " + "Pick Room ")
             if button_status:
                 print("")
         elif i > 400 and i < 500:
+            time.sleep(1)
             print("Room 5")
             setText(rooms_name[4] + "       " + "Pick Room ")
             if button_status:
                 print("")
         elif i > 500 and i < 600:
+            time.sleep(1)
             print("Room 6")
             setText(rooms_name[5] + "       " + "Pick Room ")
             if button_status:
                 print("")
         elif i > 600 and i < 700:
+            time.sleep(1)
             print("Room 7")
             setText(rooms_name[6] + "       " + "Pick Room ")
             if button_status:
                 print("")
         elif i > 700 and i < 800:
+            time.sleep(1)
             print("Room 8")
             setText(rooms_name[7] + "       " + "Pick Room ")
             if button_status:
                 print("")
         elif i > 800 and i < 900:
+            time.sleep(1)
             print("Room 9")
             setText(rooms_name[8] + "       " + "Pick Room ")
             if button_status:
                 print("")
         elif i > 900 and i < 1000:
+            time.sleep(1)
             setText(rooms_name[9] + "       " + "Pick Room ")
             if button_status:
                 print("")
@@ -79,22 +92,44 @@ def GetRoom():
 time.sleep(1)
 analogWrite(led, 1)
 i = 0
-GetRoom()
+x = 0
+Pickt_name = GetRoom()
 
 #while True:
 
 
-# while True:
-# #    i = analogRead(potentiometer)
+while True:
+#    i = analogRead(potentiometer)
 
-#     [ temp,hum ] = dht(dht_sensor_port, 0)
-#     t = str(temp)
-#     h = str(hum)
+    light_intensity = analogRead(light_sensor)
+
+    [ temp,hum ] = dht(dht_sensor_port, 0)
+    t = str(temp)
+    h = str(hum)
 
 
-# #    setRGB(0, 128, 64)
-# #    setRGB(0, 255, 0)
-# #    setText("Temp: " + t + "C       " + "Humidity: " + h + "%")
+
+    if light_intensity > 50:
+        x = 1
+
+        setRGB(0, 128, 64)
+        setRGB(0, 255, 0)
+        setText("Place: " + Pickt_name + "      " + indstilling[x])
+        time.sleep(3)
+        setRGB(0, 128, 64)
+        setRGB(0, 255, 0)
+        setText("Temp: " + t + "C       " + "Humidity: " + h + "%")
+
+    else:
+
+        setRGB(0, 128, 64)
+        setRGB(0, 255, 0)
+        setText("Place: " + Pickt_name + "      " + indstilling[x])
+        time.sleep(3)
+        setRGB(0, 128, 64)
+        setRGB(0, 255, 0)
+        setText("Temp: " + t + "C       " + "Humidity: " + h + "%")
+
 
 
 
