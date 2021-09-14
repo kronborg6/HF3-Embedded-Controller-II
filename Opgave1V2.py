@@ -1,7 +1,8 @@
 import time
+import math
 from grovepi import *
 from grove_rgb_lcd import *
-import math
+
 rooms = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 rooms_name = ["Lærerværelse", "Kantian", "Kontor", "klasselokale 1", "klasselokale 2", "klasselokale 3", "Mødelokale", "klasselokale 4", "", ""]
 indstilling = ["Daglig rutine", "Nat indstilling"]
@@ -12,6 +13,11 @@ dht_sensor_port = 7
 button = 4
 light_sensor = 1
 sound_senor = 0
+
+state = False
+max_delay = 0.60
+last_time = time.time()
+pulse_count = 0
 
 pinMode(led, "OUTPUT")
 pinMode(button, "INPUT")
@@ -24,6 +30,7 @@ def GetRoom():
 
         button_status = digitalRead(button)
         i = analogRead(potentiometer)
+        sound_level = analogRead(sound_senor)
 
         if i > 1 and i < 100:
             #print("Room 1")
@@ -103,6 +110,10 @@ while True:
 
     light_intensity = analogRead(light_sensor)
 
+    sound_level = analogRead(sound_senor)
+
+    new_state = digitalRead(button)
+
     [ temp,hum ] = dht(dht_sensor_port, 0)
     t = str(temp)
     h = str(hum)
@@ -112,6 +123,18 @@ while True:
     if light_intensity > 50:
         x = 1
 
+        if sound_level > 500:
+            print("Allam")
+            if new_state and not state:
+                pulse_count += 1
+                state = True
+                last_time = time.time()
+            elif not new_state:
+                state = False
+            if time.time() > (last_time + max_delay) and pulse_count > 0:
+                if pulse_count == 2:
+                    print("")
+
         setRGB(0, 128, 64)
         setRGB(0, 255, 0)
         setText("Place: " + Pickt_name + "      " + indstilling[x])
@@ -119,6 +142,8 @@ while True:
         setRGB(0, 128, 64)
         setRGB(0, 255, 0)
         setText("Temp: " + t + "C       " + "Humidity: " + h + "%")
+
+
 
     else:
 
@@ -129,10 +154,3 @@ while True:
         setRGB(0, 128, 64)
         setRGB(0, 255, 0)
         setText("Temp: " + t + "C       " + "Humidity: " + h + "%")
-
-
-
-
-# #    if True:
-# #        while True:
-# #            print("G")
