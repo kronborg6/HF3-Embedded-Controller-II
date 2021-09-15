@@ -23,7 +23,7 @@ def GetRoom():
         if i > 1 and i < 100:
             setText(rooms_name[0] + "       " + "Pick Room ")
             if button_status:
-                print("")
+                return rooms_name[0]
         elif i > 100 and i < 200:
             setText(rooms_name[1] + "       " + "Pick Room ")
             if button_status:
