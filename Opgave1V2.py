@@ -100,39 +100,62 @@ analogWrite(led, 1)
 i = 0
 x = 0
 Pickt_name = GetRoom()
+HLyd = 0
+
+
+on_off = False
 
 #while True:
 
+def til_fahrenheit():
+    print("gg")
+def til_c(temp):
+    c = (temp - 32) * 0.5556
+    return str(c)
 
 while True:
 #    i = analogRead(potentiometer)
+    on = True
 
     light_intensity = analogRead(light_sensor)
-
     sound_level = analogRead(sound_senor)
-
     new_state = digitalRead(button)
-
+    i = analogRead(potentiometer)
     [ temp,hum ] = dht(dht_sensor_port, 0)
-    t = str(temp)
+
+    # t = str(temp)
+
     h = str(hum)
 
-
+    if sound_level > 500:
+        HLyd += 1
 
     if light_intensity > 50:
         x = 1
 
-        if sound_level > 500:
-            print("Allam")
-            if new_state and not state:
-                pulse_count += 1
-                state = True
-                last_time = time.time()
-            elif not new_state:
-                state = False
-            if time.time() > (last_time + max_delay) and pulse_count > 0:
-                if pulse_count == 2:
-                    print("")
+        if sound_level < 500:
+            while on:
+                print("Allam")
+                if new_state and not state:
+                    pulse_count += 1
+                    state = True
+                    last_time = time.time()
+                elif not new_state:
+                    state = False
+                if time.time() > (last_time + max_delay) and pulse_count > 0:
+                    if pulse_count == 2:
+                        print("Slå alem fra")
+                        on = False
+
+        if new_state:
+            on_off = not on_off
+        
+        if on_off:
+            t = str(temp)
+
+        else:
+            t = til_c(temp)
+
 
         setRGB(0, 128, 64)
         setRGB(0, 255, 0)
@@ -141,15 +164,35 @@ while True:
         setRGB(0, 128, 64)
         setRGB(0, 255, 0)
         setText("Temp: " + t + "C       " + "Humidity: " + h + "%")
-
-
 
     else:
 
-        setRGB(0, 128, 64)
-        setRGB(0, 255, 0)
-        setText("Place: " + Pickt_name + "      " + indstilling[x])
-        time.sleep(3)
-        setRGB(0, 128, 64)
-        setRGB(0, 255, 0)
-        setText("Temp: " + t + "C       " + "Humidity: " + h + "%")
+        if i < 500:
+
+            setRGB(0, 128, 64)
+            setRGB(0, 255, 0)
+            setText("HøjeLyde: " + HLyd + "      " + "Tryk på knapen for reset den")
+
+            if new_state:
+                HLyd = 0
+        else:
+
+            if new_state:
+                on_off = not on_off
+            
+            if on_off:
+                t = str(temp)
+
+            else:
+                t = til_c(temp)
+
+
+            setRGB(0, 128, 64)
+            setRGB(0, 255, 0)
+            setText("Place: " + Pickt_name + "      " + indstilling[x])
+            time.sleep(3)
+            setRGB(0, 128, 64)
+            setRGB(0, 255, 0)
+            setText("Temp: " + t + "C       " + "Humidity: " + h + "%")
+
+
