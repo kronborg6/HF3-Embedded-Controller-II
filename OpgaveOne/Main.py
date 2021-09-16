@@ -12,7 +12,7 @@ from Temp import *
 rooms_name = ["Lærerværelse", "Kantian", "Kontor", "klasselokale 1", "klasselokale 2", "klasselokale 3", "Mødelokale", "klasselokale 4", "klasselokale 5", "klasselokale 6"]
 
 
-room = GetRoom()
+room = GetRoom(rooms_name)
 
 STemp = 20
 state = False
@@ -24,36 +24,44 @@ button = 4
 dht_sensor_port = 7
 potentiometer = 2
 light_sensor = 1
+sound_senor = 0
+
 
 HLyd = 0
 
 pinMode(button, "INPUT")
 
+
+print("Running")
 while True:
+    try:
+        button_status = digitalRead(button)
+        light_intensity = analogRead(light_sensor)
+        i = analogRead(potentiometer)
+        sound_level = analogRead(sound_senor)
+        [ temp,hum ] = dht(dht_sensor_port, 0)
+        if light_intensity < 50:
+            Set_Alram()
 
-    button_status = digitalRead(button)
-    light_intensity = analogRead(light_sensor)
-    i = analogRead(potentiometer)
-    sound_level = analogRead(sound_senor)
-    [ temp,hum ] = dht(dht_sensor_port, 0)
-    if light_intensity < 50:
-        Set_Alram()
+        if sound_level < 500:
+            HLyd += 1
 
-    if sound_level < 500:
-        HLyd += 1
+        
 
-    
-
-    if i < 50:
-        display_temp_c(temp, hum)
-    elif i < 100:
-        display_temp_fan(temp, hum)
-    elif i < 150:
-        set_temp(STemp, state, max_delay, pulse_count)
-    elif  i < 200:
-        Show_sound(HLyd)
-        if button_status:
-            print("Høje lyd er blevet sat til 0")
-            HLyd = 0
+        if i < 50:
+            display_temp_c(temp, hum)
+        elif i < 100:
+            display_temp_fan(temp, hum)
+        elif i < 150:
+            set_temp(STemp, state, max_delay, pulse_count)
+        elif  i < 200:
+            Show_sound(HLyd)
+            if button_status:
+                print("Høje lyd er blevet sat til 0")
+                HLyd = 0
+    except KeyboardInterrupt:
+        break
+    except (IOError, TypeError) as e:
+        print(e)
 
 
