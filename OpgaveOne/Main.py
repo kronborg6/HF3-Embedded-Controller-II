@@ -1,5 +1,6 @@
-from alram import Set_Alram
-from Showtemp import display_temp
+from alram import *
+from Sound import *
+from Showtemp import *
 import time
 import math
 from grovepi import *
@@ -19,18 +20,29 @@ max_delay = 0.60
 last_time = time.time()
 pulse_count = 0
 
+button = 4
 dht_sensor_port = 7
 potentiometer = 2
 light_sensor = 1
 
+HLyd = 0
+
 pinMode(button, "INPUT")
 
 while True:
+
+    button_status = digitalRead(button)
     light_intensity = analogRead(light_sensor)
     i = analogRead(potentiometer)
+    sound_level = analogRead(sound_senor)
     [ temp,hum ] = dht(dht_sensor_port, 0)
     if light_intensity < 50:
         Set_Alram()
+
+    if sound_level < 500:
+        HLyd += 1
+
+    
 
     if i < 50:
         display_temp_c(temp, hum)
@@ -38,7 +50,10 @@ while True:
         display_temp_fan(temp, hum)
     elif i < 150:
         set_temp(STemp, state, max_delay, pulse_count)
-    else:
-        if light_intensity < 50:
-            Set_Alram()
+    elif  i < 200:
+        Show_sound(HLyd)
+        if button_status:
+            print("Høje lyd er blevet sat til 0")
+            HLyd = 0
+
 

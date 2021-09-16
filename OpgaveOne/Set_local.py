@@ -5,7 +5,7 @@ from grove_rgb_lcd import *
 potentiometer = 2
 button = 4
 
-def GetRoom(button_status, i, rooms_name):
+def GetRoom(rooms_name):
     on_start = True 
     pinMode(button, "INPUT")
 
