@@ -5,7 +5,7 @@ from grove_rgb_lcd import *
 
 button = 4
 
-def set_temp(STemp, state, max_delay, pulse_count):
+def set_temp(STemp, state, max_delay, pulse_count, last_time):
     new_state = digitalRead(button)
     setRGB(0, 128, 64)
     setRGB(0, 255, 0)

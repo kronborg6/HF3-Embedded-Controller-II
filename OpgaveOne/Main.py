@@ -53,7 +53,7 @@ while True:
         elif i < 100:
             display_temp_fan(temp, hum)
         elif i < 150:
-            set_temp(STemp, state, max_delay, pulse_count)
+            set_temp(STemp, state, max_delay, pulse_count, last_time)
         elif  i < 200:
             Show_sound(HLyd)
             if button_status:
