@@ -23,6 +23,7 @@ dht_sensor_port = 7
 potentiometer = 2
 light_sensor = 1
 
+pinMode(button, "INPUT")
 
 while True:
     light_intensity = analogRead(light_sensor)

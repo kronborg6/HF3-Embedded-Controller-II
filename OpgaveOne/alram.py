@@ -6,7 +6,6 @@ max_delay = 0.60
 last_time = time.time()
 pulse_count = 0
 
-pinMode(button, "INPUT")
 
 
 
@@ -16,6 +15,7 @@ def Set_Alram():
     last_time = time.time()
     pulse_count = 0
     button = 4
+    pinMode(button, "INPUT")
     while True:
         new_state = digitalRead(button)
 
