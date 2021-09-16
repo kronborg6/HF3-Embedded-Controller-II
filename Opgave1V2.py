@@ -102,8 +102,10 @@ x = 0
 Pickt_name = GetRoom()
 HLyd = 0
 
+tempurtur = 20
 
 on_off = False
+
 
 #while True:
 
@@ -116,6 +118,8 @@ def til_c(temp):
 while True:
 #    i = analogRead(potentiometer)
     on = True
+    tempon = True
+
 
     light_intensity = analogRead(light_sensor)
     sound_level = analogRead(sound_senor)
@@ -168,6 +172,26 @@ while True:
     else:
 
         if i < 500:
+            while tempon:
+                setRGB(0, 128, 64)
+                setRGB(0, 255, 0)
+                setText("Set temperature: " + tempurtur + "      " + "Tryk to + Et tryk - tre tryk SET")
+                if new_state and not state:
+                    pulse_count += 1
+                    state = True
+                    last_time = time.time()
+                elif not new_state:
+                    state = False
+                if time.time() > (last_time + max_delay) and pulse_count > 0:
+                    if pulse_count == 1:
+                        tempurtur -= 1
+                    if pulse_count == 2:
+                        tempurtur += 1
+                    if pulse_count == 3:
+                        tempon = False
+
+
+        if i < 250:
 
             setRGB(0, 128, 64)
             setRGB(0, 255, 0)
