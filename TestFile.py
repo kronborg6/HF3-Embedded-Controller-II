@@ -9,3 +9,5 @@ def name(id):
 new_name = name(0)
 
 print(new_name)
+
+print("+")
