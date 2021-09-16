@@ -175,7 +175,8 @@ while True:
                 setRGB(0, 128, 64)
                 setRGB(0, 255, 0)
                 time.sleep(1)
-                setText("Set temperature: " + tempurtur + "      " + "Tryk to + Et tryk - tre tryk SET")
+                tempstr = str(tempurtur)
+                setText("Set temperature: " + tempstr + "      " + "Tryk to + Et tryk - tre tryk SET")
                 if new_state and not state:
                     pulse_count += 1
                     state = True
@@ -195,7 +196,8 @@ while True:
 
             setRGB(0, 128, 64)
             setRGB(0, 255, 0)
-            setText("HøjeLyde: " + HLyd + "      " + "Tryk på knapen for reset den")
+            HLydstr = str(HLyd)
+            setText("HøjeLyde: " + HLydstr + "      " + "Tryk på knapen for reset den")
 
             if new_state:
                 HLyd = 0
