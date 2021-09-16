@@ -106,17 +106,16 @@ tempurtur = 20
 
 on_off = False
 
-
-#while True:
-
 def til_fahrenheit():
     print("gg")
 def til_c(temp):
     c = (temp - 32) * 0.5556
     return str(c)
 
+
+print("It's on!!!")
 while True:
-#    i = analogRead(potentiometer)
+    i = analogRead(potentiometer)
     on = True
     tempon = True
 
@@ -134,7 +133,7 @@ while True:
     if sound_level > 500:
         HLyd += 1
 
-    if light_intensity > 50:
+    if light_intensity < 50:
         x = 1
 
         if sound_level < 500:
@@ -175,6 +174,7 @@ while True:
             while tempon:
                 setRGB(0, 128, 64)
                 setRGB(0, 255, 0)
+                time.sleep(1)
                 setText("Set temperature: " + tempurtur + "      " + "Tryk to + Et tryk - tre tryk SET")
                 if new_state and not state:
                     pulse_count += 1
