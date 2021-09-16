@@ -8,6 +8,7 @@ button = 4
 def GetRoom(rooms_name):
     on_start = True 
     pinMode(button, "INPUT")
+    print("Inset Room")
 
     while on_start:
 

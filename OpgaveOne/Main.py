@@ -43,7 +43,7 @@ while True:
         if light_intensity < 50:
             Set_Alram()
 
-        if sound_level < 500:
+        if sound_level > 300:
             HLyd += 1
 
         
