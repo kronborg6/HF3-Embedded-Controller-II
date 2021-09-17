@@ -64,7 +64,7 @@ while True:
             time.sleep(1)
             setRGB(0, 128, 64)
             setRGB(0, 255, 0)
-            setText("Skift tempurtur")
+            setText_norefresh("Skift tempurtur")
             if button_status:
                 STemp = set_temp(STemp)
             # set_temp(STemp, state, max_delay, pulse_count, last_time)

@@ -22,7 +22,7 @@ def Set_Alram():
         new_state = digitalRead(button)
 
         # print("Allam")
-        digitalWirte(led, 1)
+        digitalWrite(led, 1)
 
         if new_state and not state:
             pulse_count += 1
@@ -33,6 +33,6 @@ def Set_Alram():
         if time.time() > (last_time + max_delay) and pulse_count > 0:
             if pulse_count == 2:
                 print("Slå alem fra")
-                digitalWirte(led, 0)
+                digitalWrite(led, 0)
 
                 break

@@ -19,15 +19,15 @@ def set_temp(STemp):
         time.sleep(1)
         setRGB(0, 128, 64)
         setRGB(0, 255, 0)
-        setText("Tryk En gnag for + Et tryk - tre tryk SET")
+        setText_norefresh("Tryk En gnag for + Et tryk - tre tryk SET")
         new_state = digitalRead(button)
         if new_state:
             while True:
-                time.sleep(0.5)
+                # time.sleep(0.5)
                 tempstr = str(STemp)
                 setRGB(0, 128, 64)
                 setRGB(0, 255, 0)
-                setText("Set temperature: " + tempstr + "C ")
+                setText_norefresh("Set temperature: " + tempstr + "C ")
                 new_state = digitalRead(button)
                 if new_state and not state:
                     pulse_count += 1
