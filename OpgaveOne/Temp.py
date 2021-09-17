@@ -17,7 +17,7 @@ def set_temp(STemp):
     setRGB(0, 255, 0)
     while True:
         tempstr = str(STemp)
-        # time.sleep(4)
+        time.sleep(1)
         setRGB(0, 128, 64)
         setRGB(0, 255, 0)
         setText("Tryk En gnag for + Et tryk - tre tryk SET")
