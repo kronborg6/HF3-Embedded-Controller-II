@@ -49,3 +49,5 @@ def set_temp(STemp):
                     if pulse_count == 5:
                         pulse_count = 0
                         return STemp
+                    else:
+                        pulse_count = 0
