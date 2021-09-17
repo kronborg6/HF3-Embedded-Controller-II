@@ -3,10 +3,11 @@ from grovepi import *
 from grove_rgb_lcd import *
 
 
-pinMode(button, "INPUT")
+
 
 def set_temp(STemp, state, max_delay, pulse_count, last_time):
     button = 4
+    pinMode(button, "INPUT")
     time.sleep(1)
     tempstr = str(STemp)
     while True:
