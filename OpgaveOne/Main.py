@@ -62,7 +62,7 @@ while True:
             setRGB(0, 255, 0)
             setText("Skift tempurtur")
             if button_status:
-                set_temp(STemp)
+                STemp = set_temp(STemp)
             # set_temp(STemp, state, max_delay, pulse_count, last_time)
         elif  i < 200:
             print("Se hvormange høje Lyde")

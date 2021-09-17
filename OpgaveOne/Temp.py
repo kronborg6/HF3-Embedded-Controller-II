@@ -24,6 +24,7 @@ def set_temp(STemp):
         new_state = digitalRead(button)
         if new_state:
             while True:
+                time.sleep(1)
                 setRGB(0, 128, 64)
                 setRGB(0, 255, 0)
                 setText("Set temperature: " + tempstr + "C ")
