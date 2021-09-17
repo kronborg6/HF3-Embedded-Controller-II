@@ -43,10 +43,10 @@ def set_temp(STemp):
                         STemp -= 1
                         STemp = STemp
                     if pulse_count == 3:
-                        STemp = STemp
-                        # pulse_count = 0
-                    if pulse_count == 5:
                         pulse_count = 0
                         return STemp
+                        # STemp = STemp
+                        # pulse_count = 0
+                    # if pulse_count == 5:
                     else:
                         pulse_count = 0
