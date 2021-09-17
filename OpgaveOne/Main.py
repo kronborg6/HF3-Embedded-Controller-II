@@ -61,7 +61,6 @@ while True:
             display_temp_fan(temp, hum)
         elif i < 150:
             print("Skift tempurtur")
-            time.sleep(1)
             setRGB(0, 128, 64)
             setRGB(0, 255, 0)
             setText_norefresh("Skift tempurtur")
