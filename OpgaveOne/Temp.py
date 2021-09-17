@@ -5,14 +5,19 @@ from grove_rgb_lcd import *
 
 
 
-def set_temp(STemp, state, max_delay, pulse_count, last_time):
+def set_temp(STemp):
+# def set_temp(STemp, state, max_delay, pulse_count, last_time):
     button = 4
+    state = False
+    max_delay = 0.60
+    last_time = time.time()
+    pulse_count = 0
     pinMode(button, "INPUT")
-    time.sleep(1)
     tempstr = str(STemp)
+    setRGB(0, 128, 64)
+    setRGB(0, 255, 0)
     while True:
-        setRGB(0, 128, 64)
-        setRGB(0, 255, 0)
+        time.sleep(1)
         setText("Set temperature: " + tempstr + " " + "Tryk En gnag for + Et tryk - tre tryk SET")
         new_state = digitalRead(button)
 
