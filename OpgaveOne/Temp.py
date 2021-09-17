@@ -13,12 +13,12 @@ def set_temp(STemp):
     last_time = time.time()
     pulse_count = 0
     pinMode(button, "INPUT")
-    tempstr = str(STemp)
     setRGB(0, 128, 64)
     setRGB(0, 255, 0)
     while True:
+        tempstr = str(STemp)
         setText("Set temperature: " + tempstr + "C ")
-        time.sleep(1)
+        time.sleep(4)
         setText("Tryk En gnag for + Et tryk - tre tryk SET")
         new_state = digitalRead(button)
 
