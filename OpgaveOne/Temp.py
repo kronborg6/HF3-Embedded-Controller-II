@@ -38,7 +38,10 @@ def set_temp(STemp):
                 if time.time() > (last_time + max_delay) and pulse_count > 0:
                     if pulse_count == 1:
                         STemp += 1
+                        pulse_count = 0
                     if pulse_count == 2:
                         STemp -= 1
+                        pulse_count = 0
                     if pulse_count == 3:
+                        pulse_count = 0
                         return STemp
