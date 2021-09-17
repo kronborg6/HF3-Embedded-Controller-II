@@ -23,6 +23,7 @@ def Set_Alram():
 
         # print("Allam")
         digitalWrite(led, 1)
+        digitalWrite(led, 0)
 
         if new_state and not state:
             pulse_count += 1
