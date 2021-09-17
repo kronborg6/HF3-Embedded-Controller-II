@@ -40,11 +40,12 @@ while True:
         i = analogRead(potentiometer)
         sound_level = analogRead(sound_senor)
         [ temp,hum ] = dht(dht_sensor_port, 0)
-        if light_intensity < 50:
-            Set_Alram()
+
 
         if sound_level > 300:
             HLyd += 1
+            if light_intensity < 50:
+                Set_Alram()
 
         
 
@@ -53,7 +54,12 @@ while True:
         elif i < 100:
             display_temp_fan(temp, hum)
         elif i < 150:
-            set_temp(STemp)
+            time.sleep(1)
+            setRGB(0, 128, 64)
+            setRGB(0, 255, 0)
+            setText("Skift tempurtur")
+            if button_status:
+                set_temp(STemp)
             # set_temp(STemp, state, max_delay, pulse_count, last_time)
         elif  i < 200:
             Show_sound(HLyd)
