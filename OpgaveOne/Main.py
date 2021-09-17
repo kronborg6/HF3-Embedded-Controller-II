@@ -50,10 +50,13 @@ while True:
         
 
         if i < 50:
+            print("Display temp C")
             display_temp_c(temp, hum)
         elif i < 100:
+            print("Display temp Fan")
             display_temp_fan(temp, hum)
         elif i < 150:
+            print("Skift tempurtur")
             time.sleep(1)
             setRGB(0, 128, 64)
             setRGB(0, 255, 0)
@@ -62,6 +65,7 @@ while True:
                 set_temp(STemp)
             # set_temp(STemp, state, max_delay, pulse_count, last_time)
         elif  i < 200:
+            print("Se hvormange høje Lyde")
             Show_sound(HLyd)
             if button_status:
                 print("Høje lyd er blevet sat til 0")
