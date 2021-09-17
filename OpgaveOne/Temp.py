@@ -23,7 +23,7 @@ def set_temp(STemp):
         new_state = digitalRead(button)
         if new_state:
             while True:
-                time.sleep(1)
+                time.sleep(0.5)
                 tempstr = str(STemp)
                 setRGB(0, 128, 64)
                 setRGB(0, 255, 0)
@@ -38,10 +38,10 @@ def set_temp(STemp):
                 if time.time() > (last_time + max_delay) and pulse_count > 0:
                     if pulse_count == 1:
                         STemp += 1
-                        pulse_count = 0
+                        # pulse_count = 0
                     if pulse_count == 2:
                         STemp -= 1
-                        pulse_count = 0
+                        # pulse_count = 0
                     if pulse_count == 3:
                         pulse_count = 0
                         return STemp
