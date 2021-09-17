@@ -1,5 +1,5 @@
 import time
-
+from grovepi import *
 
 state = False
 max_delay = 0.60
@@ -15,11 +15,15 @@ def Set_Alram():
     last_time = time.time()
     pulse_count = 0
     button = 4
+    led = 3
     pinMode(button, "INPUT")
+    pinMode(led, "OUTPUT")
     while True:
         new_state = digitalRead(button)
 
-        print("Allam")
+        # print("Allam")
+        digitalWirte(led, 1)
+
         if new_state and not state:
             pulse_count += 1
             state = True
@@ -29,4 +33,6 @@ def Set_Alram():
         if time.time() > (last_time + max_delay) and pulse_count > 0:
             if pulse_count == 2:
                 print("Slå alem fra")
+                digitalWirte(led, 0)
+
                 break

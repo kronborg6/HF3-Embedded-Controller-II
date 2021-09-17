@@ -25,11 +25,14 @@ dht_sensor_port = 7
 potentiometer = 2
 light_sensor = 1
 sound_senor = 0
+led = 3
+
 
 
 HLyd = 0
 
 pinMode(button, "INPUT")
+pinMode(led, "OUTPUT")
 
 
 print("Running")
@@ -40,6 +43,7 @@ while True:
         i = analogRead(potentiometer)
         sound_level = analogRead(sound_senor)
         [ temp,hum ] = dht(dht_sensor_port, 0)
+        digitalWirte(led, 0)
 
 
         if sound_level > 300:
