@@ -16,7 +16,6 @@ def set_temp(STemp):
     setRGB(0, 128, 64)
     setRGB(0, 255, 0)
     while True:
-        tempstr = str(STemp)
         time.sleep(1)
         setRGB(0, 128, 64)
         setRGB(0, 255, 0)
@@ -25,6 +24,7 @@ def set_temp(STemp):
         if new_state:
             while True:
                 time.sleep(1)
+                tempstr = str(STemp)
                 setRGB(0, 128, 64)
                 setRGB(0, 255, 0)
                 setText("Set temperature: " + tempstr + "C ")
