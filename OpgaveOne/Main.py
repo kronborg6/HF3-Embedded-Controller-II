@@ -9,7 +9,7 @@ from Set_local import *
 from Showtemp import *
 from Temp import *
 
-rooms_name = ["Lærerværelse", "Kantian", "Kontor", "klasselokale 1", "klasselokale 2", "klasselokale 3", "Mødelokale", "klasselokale 4", "klasselokale 5", "klasselokale 6"]
+rooms_name = ["Laerervaerelse", "Kantian", "Kontor", "klasselokale 1", "klasselokale 2", "klasselokale 3", "Mødelokale", "klasselokale 4", "klasselokale 5", "klasselokale 6"]
 
 
 room = GetRoom(rooms_name)
@@ -77,5 +77,3 @@ while True:
         break
     except (IOError, TypeError) as e:
         print(e)
-
-

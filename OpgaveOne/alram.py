@@ -33,11 +33,11 @@ def Set_Alram():
             state = False
         if time.time() > (last_time + max_delay) and pulse_count > 0:
             if pulse_count == 1:
-                print("Slå alem fra")
+                print("Slaa alem fra")
                 digitalWrite(led, 0)
                 break
             if pulse_count == 2:
-                print("Slå alem fra")
+                print("Slaa alem fra")
                 digitalWrite(led, 0)
                 break
             else:

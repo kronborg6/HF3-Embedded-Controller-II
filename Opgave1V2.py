@@ -9,8 +9,8 @@ indstilling = ["Daglig rutine", "Nat indstilling"]
 
 led = 3
 potentiometer = 2
-dht_sensor_port = 7
 button = 4
+dht_sensor_port = 7
 light_sensor = 1
 sound_senor = 0
 
@@ -197,7 +197,7 @@ while True:
             setRGB(0, 128, 64)
             setRGB(0, 255, 0)
             HLydstr = str(HLyd)
-            setText("HøjeLyde: " + HLydstr + "      " + "Tryk på knapen for reset den")
+            setText("HoejeLyde: " + HLydstr + "      " + "Tryk på knapen for reset den")
 
             if new_state:
                 HLyd = 0
