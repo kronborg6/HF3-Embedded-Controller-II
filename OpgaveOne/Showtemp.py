@@ -15,4 +15,4 @@ def display_temp_fan(temp, hum):
         f = temp * 1.8 + 32
         setRGB(0, 128, 64)
         setRGB(0, 255, 0)
-        setText_norefresh("Temp: " + str(f) + "C       " + "Humidity: " + str(hum) + "%")
+        setText_norefresh("Temp: " + str(f) + "       " + "Humidity: " + str(hum) + "%")
