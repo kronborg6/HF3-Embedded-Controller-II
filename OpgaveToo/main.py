@@ -8,6 +8,8 @@ from OpgaveToo.Set_local import *
 
 rooms_name = ["DriveHus 1", "DriveHus 2", "DriveHus 3", "DriveHus 4", "DriveHus 5", "DriveHus 6", "DriveHus 7", "DriveHus 8", "DriveHus 9", "DriveHus 10"]
 
+speed = [1, 50, 100]
+
 room = GetRoom(rooms_name)
 
 STemp = 20
@@ -22,7 +24,6 @@ potentiometer = 2
 light_sensor = 1
 sound_senor = 0
 led = 3
-
 
 
 while True:
