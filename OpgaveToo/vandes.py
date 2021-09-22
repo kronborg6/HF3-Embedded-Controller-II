@@ -8,12 +8,10 @@ from grovepi import *
 def vandes_start():
 
     oldtime = time.time()
+    print("Vandes")
     while True:
-        print("Vandes")
         if time.time() - oldtime > 599:
             print("Det er blivet vandet i 10 min")
             break
 def vandes_stop():
     print("Stop med at vande")
-
-            
