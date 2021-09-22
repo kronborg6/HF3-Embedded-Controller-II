@@ -8,8 +8,6 @@ def start_lys(lys_stryke, is_on):
         print("Tænd lys")
         return False
 
-    print("Tænd lys")
-
 def sluk_lys():
     print("Slyk lys")
     return True

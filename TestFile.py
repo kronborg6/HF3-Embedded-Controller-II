@@ -1,4 +1,4 @@
-import schedule
+# import schedule
 import time
 
 List = ["Mikkel", "Kronborg"]
@@ -69,13 +69,50 @@ def Open_Vinduer():
 def job():
     print("I'm working...")
 
-schedule.every(1).minutes.do(job)
+# schedule.every(1).minutes.do(job)
 # # schedule.every().hour.do(job)
 # schedule.every().day.at("10:30").do(job)
 # schedule.every().monday.do(job)
 # schedule.every().wednesday.at("13:15").do(job)
 # schedule.every().minute.at(":17").do(job)
-print("Test")
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+# print("Test")
+# while True:
+#     schedule.run_pending()
+#     time.sleep(1)
+
+
+
+
+
+
+def test_math():
+    x = 0.01
+    y = 100
+
+    print(y * x)
+
+test_math()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

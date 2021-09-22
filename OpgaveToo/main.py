@@ -27,4 +27,28 @@ led = 3
 
 
 while True:
+
+    light_intensity = analogRead(light_sensor)
+    i = analogRead(potentiometer)
+
+    if i < 100:
+        print("")
+    elif i < 200:
+        print("")
+    elif i < 300:
+        print("")
+    elif i < 400:
+        print("")
+    elif i < 500:
+        print("")
+    elif i < 600:
+        print("")
+    elif i < 700:
+        print("")
+
+
+
+
+
+
     print("TEST")

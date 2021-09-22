@@ -4,7 +4,7 @@ from grovepi import *
 
 # temp = 0
 
-def Open_Vinduer():
+def Open_Vinduer(mode):
     dht_sensor_port = 7
     start_time = time.time()
     while True:
@@ -14,7 +14,7 @@ def Open_Vinduer():
             while True:
                 [ temp,hum ] = dht(dht_sensor_port, 0)
                 if temp < 25:
-                    if time.time() - start_time > 299:
+                    if time.time() - start_time > 299 * mode:
                         start_time = time.time()
                         print("Luk Vindue")
                         break
