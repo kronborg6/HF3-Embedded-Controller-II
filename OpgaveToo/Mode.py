@@ -3,7 +3,7 @@ from grovepi import *
 
 
 
-def pick_mode(speed):
+def pick_mode():
 
     potentiometer = 2
     button = 4
@@ -19,15 +19,15 @@ def pick_mode(speed):
         if i < 333:
             setText_norefresh("Normal Mode" + "       " + "Press button to pick")
             if button_status:
-                return 1
+                return 1, "Normal Mode"
         elif i < 666:
             setText_norefresh("Test Mode 10 time faster" + "       " + "Press button to pick")
             if button_status:
-                return 0.1
+                return 0.1, "Test Mode 10 time faster"
         elif i < 1100:
             setText_norefresh("Test Mode 100 time faster" + "       " + "Press button to pick")
             if button_status:
-                return 0.01
+                return 0.01, "Test Mode 100 time faster"
 
 
 # def normal_mode(speed):

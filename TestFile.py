@@ -91,7 +91,19 @@ def test_math():
 
     print(y * x)
 
-test_math()
+# test_math()
+names = ["Mikkel", "Kronborg", "Tina"]
+
+
+def test_retrun(names):
+    # return 1, names[1]
+    return 1, "Tina Kronborg"
+
+test = test_retrun(names)
+
+print(test[0])
+print(test[1])
+
 
 
 

@@ -14,6 +14,8 @@ rooms_name = ["Laerervaerelse", "Kantian", "Kontor", "klasselokale 1", "klasselo
 
 room = GetRoom(rooms_name)
 
+
+
 STemp = 20
 state = False
 max_delay = 0.60
