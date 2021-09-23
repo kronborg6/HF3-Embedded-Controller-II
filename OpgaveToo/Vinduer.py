@@ -2,9 +2,7 @@ import time
 from grove_rgb_lcd import *
 from grovepi import *
 
-# temp = 0
-
-def Open_Vinduer(mode):
+def Open_Vinduer(mode, dht_sensor_port):
     dht_sensor_port = 7
     start_time = time.time()
     while True:
