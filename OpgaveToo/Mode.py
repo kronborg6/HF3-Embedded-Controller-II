@@ -11,7 +11,7 @@ def pick_mode():
     setRGB(0, 255, 0)
 
     pinMode(button, "INPUT")
-    print("Inset Room")
+    print("Pick Room")
 
     while True:
         button_status = digitalRead(button)
