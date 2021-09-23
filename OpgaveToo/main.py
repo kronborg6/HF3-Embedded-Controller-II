@@ -9,6 +9,7 @@ from OpgaveToo.Mode import *
 from OpgaveToo.Set_local import *
 from OpgaveToo.Showtemp import *
 from OpgaveToo.Vinduer import *
+from OpgaveToo.vandes import *
 
 
 
@@ -67,9 +68,11 @@ if __name__ == '__main__':
     room = GetRoom(rooms_name)
     mode = pick_mode()
     # main()
-    p1 = Process(target=Open_Vinduer, args=())
+    p1 = Process(target=Open_Vinduer, args=(mode[0]))
     p1.start()
-    p2 = Process(target=main)
+    p2 = Process(target=main,  args=(room, mode))
     p2.start()
+    p3 = Process(target=run_vandes,  args=(room, mode))
+    p3.start()
     p1.join()
     p2.join()
