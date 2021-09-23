@@ -2,14 +2,14 @@ import time
 from grove_rgb_lcd import *
 from grovepi import *
 
-def Open_Vinduer(faster, dht_sensor_port):
+def Open_Vinduer(faster):
     dht_sensor_port = 7
     led = 55
     on = True
     pinMode(led, "OUTPUT")
     start_time = time.time()
     analogWrite(led, 1)
-    
+
     while True:
 
         if on:
