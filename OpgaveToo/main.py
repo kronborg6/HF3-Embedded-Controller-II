@@ -3,10 +3,10 @@ from multiprocessing import Process
 
 from grove_rgb_lcd import *
 from grovepi import *
-from set_local import *
 
-from OpgaveToo.Mode import *
-from OpgaveToo.Set_local import *
+
+from Mode import *
+from Set_local import *
 from OpgaveToo.Showtemp import *
 from OpgaveToo.Vinduer import *
 from OpgaveToo.vandes import *
@@ -19,13 +19,15 @@ dht_sensor_port = 7
 potentiometer = 2
 light_sensor = 1
 
+global room
+
 def main():
 
-    STemp = 20
-    state = False
-    max_delay = 0.60
-    last_time = time.time()
-    pulse_count = 0
+    # STemp = 20
+    # state = False
+    # max_delay = 0.60
+    # last_time = time.time()
+    # pulse_count = 0
 
     # button = 4
 
@@ -59,15 +61,38 @@ def main():
 
 if __name__ == '__main__':
 
-    room = GetRoom(rooms_name)
-    mode = pick_mode()
-    # main()
-    p1 = Process(target=Open_Vinduer, args=(mode))
-    p2 = Process(target=run_vandes,  args=(room, mode))
-    p3 = Process(target=main,  args=(room, mode))
-    p1.start()
-    p2.start()
-    p3.start()
-    p1.join()
-    p2.join()
-    p3.join()
+    try:
+        room = GetRoom(rooms_name)
+        mode = pick_mode()
+        global name
+        name = mode[1]
+        speed = mode[0]
+        # main()
+        p1 = Process(target=Open_Vinduer, args=(speed,))
+        p2 = Process(target=run_vandes,  args=(speed,))
+        p3 = Process(target=main)
+        p1.start()
+        time.sleep(0.1)
+        p2.start()
+        time.sleep(0.1)
+        p3.start()
+        time.sleep(0.1)
+        p1.join()
+        p2.join()
+        p3.join()
+
+    except KeyboardInterrupt:
+        p1.terminate()
+        time.sleep(0.1)
+        p2.terminate()
+        time.sleep(0.1)
+        p3.terminate()
+        time.sleep(0.1)
+    except (IOError, TypeError) as e:
+        p1.terminate()
+        time.sleep(0.1)
+        p2.terminate()
+        time.sleep(0.1)
+        p3.terminate()
+        time.sleep(0.1)
+        print(e)

@@ -20,13 +20,14 @@ def vandes_start(faster):
             break
 
 def run_vandes(mode):
-    if mode[0] == 0.1:
-        schedule.every(10).seconds.do(vandes_start, faster=mode[0])
-    elif mode[0] == 0.01:
-        schedule.every(2).seconds.do(vandes_start, faster=mode[0])
+    val = mode[0]
+    if val == 0.1:
+        schedule.every(10).seconds.do(vandes_start, faster=val)
+    elif val == 0.01:
+        schedule.every(2).seconds.do(vandes_start, faster=val)
     else:
-        schedule.every().day.at("10:30").do(vandes_start, faster=mode[0])
-        schedule.every().day.at("18:30").do(vandes_start, faster=mode[0])
+        schedule.every().day.at("10:30").do(vandes_start, faster=val)
+        schedule.every().day.at("18:30").do(vandes_start, faster=val)
 
     while True:
         schedule.run_pending()

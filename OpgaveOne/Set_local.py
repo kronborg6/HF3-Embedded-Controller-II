@@ -9,6 +9,9 @@ button = 4
 def GetRoom(rooms_name):
     on_start = True 
     pinMode(button, "INPUT")
+    setRGB(0, 128, 64)
+    setRGB(0, 255, 0)
+
     print("Inset Room")
 
     while on_start:
