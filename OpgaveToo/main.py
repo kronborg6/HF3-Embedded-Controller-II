@@ -1,15 +1,15 @@
 import time
 from multiprocessing import Process
 
-from grove_rgb_lcd import *
 from grovepi import *
+from grove_rgb_lcd import *
 
 
 from Mode import *
 from Set_local import *
-from OpgaveToo.Showtemp import *
-from OpgaveToo.Vinduer import *
-from OpgaveToo.vandes import *
+from Showtemp import *
+from Vinduer import *
+from vandes import *
 
 
 
@@ -21,7 +21,7 @@ light_sensor = 1
 
 global room
 
-def main():
+def run():
 
     # STemp = 20
     # state = False
@@ -70,7 +70,7 @@ if __name__ == '__main__':
         # main()
         p1 = Process(target=Open_Vinduer, args=(speed,))
         p2 = Process(target=run_vandes,  args=(speed,))
-        p3 = Process(target=main)
+        p3 = Process(target=run)
         p1.start()
         time.sleep(0.1)
         p2.start()

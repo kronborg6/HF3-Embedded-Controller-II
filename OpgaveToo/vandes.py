@@ -19,8 +19,8 @@ def vandes_start(faster):
 
             break
 
-def run_vandes(mode):
-    val = mode[0]
+def run_vandes(speed):
+    val = speed
     if val == 0.1:
         schedule.every(10).seconds.do(vandes_start, faster=val)
     elif val == 0.01:
