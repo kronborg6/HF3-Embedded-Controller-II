@@ -23,17 +23,6 @@ global room
 
 def run():
 
-    # STemp = 20
-    # state = False
-    # max_delay = 0.60
-    # last_time = time.time()
-    # pulse_count = 0
-
-    # button = 4
-
-    # sound_senor = 0
-    # led = 3
-
     setRGB(0, 128, 64)
     setRGB(0, 255, 0)
 
