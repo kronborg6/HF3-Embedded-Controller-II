@@ -6,7 +6,7 @@ import math
 from grovepi import *
 from grove_rgb_lcd import *
 from Set_local import *
-from Showtemp import *
+from Showtemp import * 
 from Temp import *
 
 rooms_name = ["Laerervaerelse", "Kantian", "Kontor", "klasselokale 1", "klasselokale 2", "klasselokale 3", "Mødelokale", "klasselokale 4", "klasselokale 5", "klasselokale 6"]
